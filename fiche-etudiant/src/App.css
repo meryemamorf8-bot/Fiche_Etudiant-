@@ -1,47 +1,22 @@
-import "./App.css";
-import StudentCard from "./components/StudentCard";
-
-const étudiant=[
-  {
-    nom: "Amor",
-    prenom: "Meryem",
-    classe: "2CS",
-    groupe: "A",
-    ville: "Tunis"
-  },
-  {
-    nom: "Ben Ali",
-    prenom: "Ahmed",
-    classe: "3CS",
-    groupe: "B",
-    ville: "Sfax"
-  },
-  {
-    nom: "Haddad",
-    prenom: "Sana",
-    classe: "1CS",
-    groupe: "C",
-    ville: "Sousse"
-  }
-]; 
-function App(){
-  return (
-    <div className="App">
-      {étudiant.map((etudiant) => (
-        <StudentCard 
-        prenom={etudiant.prenom}
-        nom={etudiant.prenom}
-        key={etudiant.email}
-        telephone={etudiant.telephone}
-        filiere={etudiant.filiere}
-        anneeEtude={etudiant.classe}
-        groupe={etudiant.groupe}
-        ville={etudiant.ville}
-        />
-      ))
-    }
-      </div>
-      </>
-  )
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  flex-wrap: wrap;
 }
-expot default App; 
+
+.actions button,
+.actions select {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #5a5fd6;
+  font-size: 14px;
+}
+
+.actions button {
+  background: #5a5fd6;
+  color: white;
+  cursor: pointer;
+}

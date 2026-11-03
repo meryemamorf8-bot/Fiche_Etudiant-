@@ -1,25 +1,19 @@
-.card {
-  background: white;
-  width: 300px;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  text-align: center;
+.card .boutons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.card img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
+.card button {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #5aa9e6;
+  color: white;
+  cursor: pointer;
 }
 
-.card h1 {
-  color: #5aa9e6;
-  font-size: 24px;
-}
-
-.card p {
-  font-size: 14px;
-  margin: 8px 0;
+.card button:last-child {
+  background: #d9534f;   /* le bouton Supprimer en rouge */
 }
