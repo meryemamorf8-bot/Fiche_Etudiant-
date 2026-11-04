@@ -1,0 +1,49 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  padding: 14px 20px;
+  background: var(--nuit);
+  box-shadow: 0 4px 14px rgba(11, 16, 48, 0.3);
+}
+
+.navbar a {
+  position: relative;
+  padding: 4px 0;
+  color: var(--ivoire);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+/* soulignement doré qui apparaît au survol */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--or);
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--or-clair);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    gap: 18px;
+  }
+}

@@ -1,0 +1,14 @@
+.footer {
+  padding: 24px 20px;
+  background: var(--nuit);
+  border-top: 3px solid var(--or);
+  color: var(--or-clair);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.footer p {
+  margin: 0;
+}

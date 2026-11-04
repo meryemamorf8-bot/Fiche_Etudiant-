@@ -1,0 +1,145 @@
+.card {
+  position: relative;
+  padding: 32px 24px 24px;
+  background: var(--blanc);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* liseré doré en haut de la carte */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--or), var(--or-clair), var(--or));
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ombre-forte);
+}
+
+/* Photo et avatar : cercle cerclé d'or */
+.card img,
+.card .avatar {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 14px;
+  border: 3px solid var(--blanc);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--or), 0 6px 16px rgba(11, 16, 48, 0.18);
+}
+
+.card img {
+  object-fit: cover;
+}
+
+.card .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--nuit), var(--nuit-clair));
+  color: var(--or-clair);
+  font-family: var(--police-titre);
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.card h1 {
+  margin: 0 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--bordure);
+  color: var(--nuit);
+  font-family: var(--police-titre);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.card p {
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--bordure);
+  color: var(--texte);
+  font-size: 14px;
+}
+
+.card p strong {
+  display: inline-block;
+  min-width: 118px;
+  color: var(--or-fonce);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Champ de modification de la ville */
+.card input {
+  width: 100%;
+  max-width: 150px;
+  padding: 5px 12px;
+  border: 1px solid var(--or);
+  border-radius: 999px;
+  background: var(--ivoire);
+  color: var(--texte);
+  font-size: 14px;
+}
+
+.card input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.3);
+}
+
+/* Boutons de la carte */
+.card .boutons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.card button {
+  padding: 10px;
+  border: 1px solid var(--nuit);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--nuit);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.card button:hover {
+  background: var(--nuit);
+  color: var(--or-clair);
+}
+
+.card button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.4);
+}
+
+/* Supprimer : rouge discret */
+.card button:last-child {
+  border-color: rgba(179, 68, 63, 0.45);
+  color: var(--danger);
+}
+
+.card button:last-child:hover {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}

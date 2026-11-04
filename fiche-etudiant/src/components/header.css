@@ -1,0 +1,59 @@
+.header {
+  padding: 44px 20px 40px;
+  background: linear-gradient(135deg, var(--nuit), var(--nuit-clair));
+  border-bottom: 3px solid var(--or);
+  text-align: center;
+}
+
+.header .monogramme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border: 2px solid var(--or);
+  border-radius: 50%;
+  background: rgba(201, 162, 75, 0.12);
+  box-shadow: 0 0 0 6px rgba(201, 162, 75, 0.12);
+  color: var(--or-clair);
+  font-family: var(--police-titre);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.header h1 {
+  margin: 0;
+  color: var(--or-clair);
+  font-family: var(--police-titre);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.header h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  margin: 16px auto 0;
+  background: var(--or);
+}
+
+.header p {
+  margin: 14px 0 0;
+  color: var(--ivoire);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+  }
+}
