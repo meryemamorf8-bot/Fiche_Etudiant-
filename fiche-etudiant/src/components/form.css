@@ -1,0 +1,237 @@
+.student-form {
+  --erreur: #ff8a95;
+  --succes: #7fd6a2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: calc(100% - 32px);
+  max-width: 600px;
+  margin: 28px auto 0;
+  padding: 32px;
+  background: linear-gradient(135deg, var(--nuit), var(--nuit-clair));
+  border: 1px solid rgba(201, 162, 75, 0.35);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre-nuit), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color-scheme: dark; /* menus déroulants et sélecteurs natifs en mode sombre */
+}
+
+.student-form h2 {
+  margin: 0 0 10px;
+  padding-bottom: 14px;
+  color: var(--or-clair);
+  font-family: var(--police-titre);
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid rgba(201, 162, 75, 0.25);
+}
+
+/* Champs côte à côte (optionnel : <div className="form-row">) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: var(--or-clair);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Étoile pour les champs obligatoires (<label className="required">) */
+.form-group label.required::after {
+  content: " *";
+  color: var(--erreur);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(201, 162, 75, 0.45);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--ivoire);
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+              background-color 0.25s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  border-color: rgba(201, 162, 75, 0.75);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-group input::placeholder {
+  color: rgba(247, 245, 239, 0.45);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--or-clair);
+  background-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.3);
+}
+
+/* Select : flèche dorée personnalisée */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 42px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c9a24b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.form-group select option {
+  background: var(--nuit);
+  color: var(--ivoire);
+}
+
+/* Champ fichier */
+.form-group input[type="file"] {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(201, 162, 75, 0.2);
+  color: var(--or-clair);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+  background: rgba(201, 162, 75, 0.35);
+}
+
+/* Remplissage automatique du navigateur : garde le fond sombre */
+.form-group input:-webkit-autofill {
+  -webkit-text-fill-color: var(--ivoire);
+  -webkit-box-shadow: 0 0 0 1000px #1c2233 inset;
+  caret-color: var(--ivoire);
+}
+
+/* Validation (ajoute la classe selon ton état React) */
+.form-group.has-error input,
+.form-group.has-error select {
+  border-color: var(--erreur);
+}
+
+.form-group.has-error input:focus,
+.form-group.has-error select:focus {
+  box-shadow: 0 0 0 3px rgba(255, 138, 149, 0.3);
+}
+
+.form-group.is-valid input,
+.form-group.is-valid select {
+  border-color: var(--succes);
+}
+
+.error-message {
+  margin: 0;
+  color: var(--erreur);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Champ désactivé */
+.form-group input:disabled,
+.form-group select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Bouton */
+.student-form button {
+  align-self: center;
+  margin-top: 8px;
+  padding: 13px 40px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--or), var(--or-clair));
+  color: var(--nuit);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.student-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(201, 162, 75, 0.5);
+}
+
+.student-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(201, 162, 75, 0.4);
+}
+
+.student-form button:focus-visible {
+  outline: 2px solid var(--ivoire);
+  outline-offset: 3px;
+}
+
+.student-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  filter: grayscale(0.4);
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .student-form {
+    padding: 22px 18px;
+    gap: 16px;
+  }
+
+  .student-form h2 {
+    font-size: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .student-form button {
+    width: 100%;
+  }
+}
+
+/* Respect des préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .student-form *,
+  .student-form button {
+    transition: none;
+  }
+
+  .student-form button:hover {
+    transform: none;
+  }
+}

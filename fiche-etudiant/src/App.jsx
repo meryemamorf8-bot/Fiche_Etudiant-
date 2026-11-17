@@ -2,101 +2,106 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
+import StudentForm from "./components/form.jsx";
 import StudentCard from "./components/StudentCard.jsx";
 import Footer from "./components/Footer.jsx";
-// import studentImage from "./assets/student.jpg";
+import etudiant1 from "./assets/etudiant1.jpg";
+import etudiant3 from "./assets/etudiante3.png";
+import etudiant4 from "./assets/etudiant4.png";
 
 function App() {
   const [etudiants, setEtudiants] = useState([
     {
+      id: 1,
       prenom: "Slim",
       nom: "Boubaker",
       email: "slimboubaker@gmail.com",
       telephone: "+216 99 999 999",
-      filiere: "Génie Logiciel",
+      filiere: "GLSI",
       anneeEtude: "2ème année",
       groupe: "GLSI 2",
       ville: "Mahdia",
-      //image: studentImage,
+      image: etudiant1,
     },
+  
     {
-      prenom: "Sarra",
-      nom: "Trabelsi",
-      email: "sarra.trabelsi@gmail.com",
-      telephone: "+216 22 345 678",
-      filiere: "Réseaux",
+      id: 3,
+      prenom: "Mariem",
+      nom: "Khalfallah",
+      email: "mariem.khalfallah@gmail.com",
+      telephone: "+216 27 567 890",
+      filiere: "RSI",
       anneeEtude: "2ème année",
-      groupe: "RI 1",
-      ville: "Sousse",
+      groupe: "RSI 2",
+      image: etudiant3,
     },
   ]);
 
-  const [filiereChoisie, setFiliereChoisie] = useState("Toutes");
+  const [recherche, setRecherche] = useState("");
 
-  const etudiantsAffiches =
-    filiereChoisie === "Toutes"
-      ? etudiants
-      : etudiants.filter((e) => e.filiere === filiereChoisie);
-
-  function ajouterEtudiant() {
-    const nouvelEtudiant = {
-      prenom: "Yassine",
-      nom: "Ben Salem",
-      email: "yassine.bensalem@gmail.com",
-      telephone: "+216 44 444 444",
-      filiere: "Génie Logiciel",
-      anneeEtude: "2ème année",
-      groupe: "GLSI 1",
-      ville: "Sfax",
+  // TP4 : ajouter (reçoit l'étudiant du formulaire)
+  function ajouterEtudiant(nouvelEtudiant) {
+    const etudiantAvecId = {
+      ...nouvelEtudiant,
+      id: Date.now(),
     };
-    setEtudiants([...etudiants, nouvelEtudiant]);
+
+    setEtudiants((anciensEtudiants) => [...anciensEtudiants, etudiantAvecId]);
   }
 
-  function supprimerEtudiant(email) {
-    setEtudiants(etudiants.filter((e) => e.email !== email));
+  // TP3 : supprimer
+  function supprimerEtudiant(id) {
+    setEtudiants((anciensEtudiants) =>
+      anciensEtudiants.filter((etudiant) => etudiant.id !== id)
+    );
   }
 
-  function modifierVille(email, nouvelleVille) {
-    setEtudiants(
-      etudiants.map((e) =>
-        e.email === email ? { ...e, ville: nouvelleVille } : e
+  // TP3 : modifier
+  function modifierEtudiant(id) {
+    const nouveauPrenom = prompt("Nouveau prénom :");
+
+    if (nouveauPrenom === null || nouveauPrenom.trim() === "") {
+      return;
+    }
+
+    setEtudiants((anciensEtudiants) =>
+      anciensEtudiants.map((etudiant) =>
+        etudiant.id === id
+          ? { ...etudiant, prenom: nouveauPrenom.trim() }
+          : etudiant
       )
     );
   }
+
+  // TP3 : filtrer par filière
+  const etudiantsFiltres = etudiants.filter((etudiant) =>
+    etudiant.filiere.toLowerCase().includes(recherche.toLowerCase())
+  );
 
   return (
     <div className="container">
       <Header />
       <Navbar />
 
-      <div className="actions">
-        <button onClick={ajouterEtudiant}>+ Ajouter un étudiant</button>
+      <StudentForm onAjouterEtudiant={ajouterEtudiant} />
 
-        <select
-          value={filiereChoisie}
-          onChange={(e) => setFiliereChoisie(e.target.value)}
-        >
-          <option value="Toutes">Toutes</option>
-          <option value="Génie Logiciel">Génie Logiciel</option>
-          <option value="Réseaux">Réseaux</option>
-        </select>
+      <div className="actions">
+        <input
+          className="recherche"
+          type="text"
+          value={recherche}
+          placeholder="Rechercher par filière..."
+          onChange={(e) => setRecherche(e.target.value)}
+        />
       </div>
 
       <main className="liste">
-        {etudiantsAffiches.map((etudiant) => (
+        {etudiantsFiltres.map((etudiant) => (
           <StudentCard
-            key={etudiant.email}
-            prenom={etudiant.prenom}
-            nom={etudiant.nom}
-            email={etudiant.email}
-            telephone={etudiant.telephone}
-            filiere={etudiant.filiere}
-            anneeEtude={etudiant.anneeEtude}
-            groupe={etudiant.groupe}
-            ville={etudiant.ville}
-            image={etudiant.image}
+            key={etudiant.id}
+            etudiant={etudiant}
+            onModifier={modifierEtudiant}
             onSupprimer={supprimerEtudiant}
-            onModifierVille={modifierVille}
           />
         ))}
       </main>

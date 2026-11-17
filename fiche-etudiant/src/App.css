@@ -4,125 +4,7 @@
   min-height: 100vh;
 }
 
-/* ==========================================================
-   Champs communs (formulaire + barre de recherche) : style sombre
-   ========================================================== */
-.formulaire input,
-.formulaire select,
-.actions input,
-.actions select {
-  padding: 11px 18px;
-  border: 1px solid rgba(201, 162, 75, 0.45);
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.07);
-  color: var(--ivoire);
-  font-size: 14px;
-  transition: border-color 0.25s ease, background-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.formulaire input::placeholder,
-.actions input::placeholder {
-  color: rgba(247, 245, 239, 0.55);
-}
-
-.formulaire input:hover,
-.formulaire select:hover,
-.actions input:hover,
-.actions select:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-.formulaire input:focus,
-.formulaire select:focus,
-.actions input:focus,
-.actions select:focus {
-  outline: none;
-  border-color: var(--or-clair);
-  background-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.3);
-}
-
-/* Menus déroulants avec flèche dorée */
-.formulaire select,
-.actions select {
-  padding-right: 44px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23c9a24b' stroke-width='2' stroke-linecap='round'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 18px center;
-  cursor: pointer;
-  appearance: none;
-}
-
-.formulaire select option,
-.actions select option {
-  background: var(--nuit);
-  color: var(--ivoire);
-}
-
-/* ==========================================================
-   Formulaire d'ajout
-   ========================================================== */
-.formulaire {
-  width: calc(100% - 32px);
-  max-width: 1100px;
-  margin: 28px auto 0;
-  padding: 24px 28px;
-  background: linear-gradient(135deg, var(--nuit), var(--nuit-clair));
-  border: 1px solid rgba(201, 162, 75, 0.35);
-  border-radius: var(--rayon);
-  box-shadow: var(--ombre-nuit);
-}
-
-.formulaire h2 {
-  margin: 0 0 18px;
-  color: var(--or-clair);
-  font-family: var(--police-titre);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.formulaire .champs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-/* Bouton principal doré */
-.formulaire button {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--or), var(--or-clair));
-  color: var(--nuit);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(201, 162, 75, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.formulaire button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(201, 162, 75, 0.55);
-}
-
-.formulaire button:active {
-  transform: translateY(0);
-}
-
-.formulaire button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(232, 207, 143, 0.5);
-}
-
-/* ==========================================================
-   Barre : recherche + filtre + compteur
-   ========================================================== */
+/* ---------- Barre : recherche + filtre + compteur ---------- */
 .actions {
   display: flex;
   align-items: center;
@@ -138,12 +20,52 @@
   box-shadow: var(--ombre-nuit);
 }
 
-.actions .recherche {
-  flex: 1;
-  min-width: 220px;
+.actions input,
+.actions select {
+  padding: 11px 18px;
+  border: 1px solid rgba(201, 162, 75, 0.45);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--ivoire);
+  font-size: 14px;
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.actions input::placeholder {
+  color: rgba(247, 245, 239, 0.55);
+}
+
+.actions input:hover,
+.actions select:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.actions input:focus,
+.actions select:focus {
+  outline: none;
+  border-color: var(--or-clair);
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.3);
 }
 
 .actions select {
+  min-width: 220px;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23c9a24b' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  cursor: pointer;
+  appearance: none;
+}
+
+.actions select option {
+  background: var(--nuit);
+  color: var(--ivoire);
+}
+
+.actions .recherche {
+  flex: 1;
   min-width: 220px;
 }
 
@@ -158,9 +80,7 @@
   white-space: nowrap;
 }
 
-/* ==========================================================
-   Liste des fiches
-   ========================================================== */
+/* ---------- Liste des fiches ---------- */
 .liste {
   flex: 1;
   display: grid;
@@ -182,18 +102,107 @@
   text-align: center;
 }
 
-/* ==========================================================
-   Mobile
-   ========================================================== */
-@media (max-width: 640px) {
-  .formulaire,
-  .actions {
-    padding: 18px;
-  }
+/* ---------- Fenêtre de confirmation ---------- */
+.fond-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(11, 16, 48, 0.7);
+  backdrop-filter: blur(4px);
+  animation: apparition 0.2s ease;
+}
 
+.modal {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px 26px;
+  background: var(--blanc);
+  border-top: 5px solid var(--or);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre-forte);
+  text-align: center;
+  animation: montee 0.25s ease;
+}
+
+.modal h3 {
+  margin: 0 0 12px;
+  color: var(--nuit);
+  font-family: var(--police-titre);
+  font-size: 22px;
+}
+
+.modal p {
+  margin: 0 0 24px;
+  color: var(--texte-doux);
+  font-size: 15px;
+}
+
+.modal p strong {
+  color: var(--nuit);
+}
+
+.modal-boutons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-boutons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.modal-boutons button:hover {
+  transform: translateY(-1px);
+}
+
+.btn-annuler {
+  border: 1px solid var(--nuit);
+  background: transparent;
+  color: var(--nuit);
+}
+
+.btn-annuler:hover {
+  background: var(--nuit);
+  color: var(--or-clair);
+}
+
+.btn-supprimer {
+  border: 1px solid var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-supprimer:hover {
+  background: #8f2f2b;
+}
+
+@keyframes apparition {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes montee {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
   .actions {
     flex-direction: column;
     align-items: stretch;
+    padding: 18px;
   }
 
   .actions .recherche,
@@ -204,9 +213,5 @@
 
   .compteur {
     text-align: center;
-  }
-
-  .formulaire button {
-    width: 100%;
   }
 }
